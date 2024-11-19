@@ -1,36 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
+## nextjs 프로젝트 구조
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+.
+├── README.md                # 프로젝트에 대한 설명과 사용법을 문서화한 파일.
+├── app                      # Next.js의 주요 애플리케이션 코드가 포함된 디렉토리. (라우트와 페이지 구성)
+├── next-env.d.ts            # Next.js에 필요한 타입 선언 파일(자동 생성 및 관리).
+├── next.config.ts           # Next.js의 설정 파일로, 빌드와 런타임에 필요한 옵션 설정.
+├── node_modules             # 프로젝트에서 사용하는 모든 npm 패키지가 설치된 디렉토리.
+├── package-lock.json        # npm 패키지의 버전 및 의존성을 고정한 파일.
+├── package.json             # 프로젝트의 메타정보, 스크립트, 의존성 목록이 포함된 파일.
+├── postcss.config.mjs       # PostCSS의 설정 파일로, Tailwind CSS 등의 PostCSS 플러그인을 설정.
+├── public                   # 정적 파일(이미지, 폰트 등)을 저장하는 디렉토리.
+├── tailwind.config.ts       # Tailwind CSS의 설정 파일로, 테마, 플러그인, 확장 설정 포함.
+└── tsconfig.json            # TypeScript 설정 파일로, 컴파일러 옵션과 경로 별칭 등이 정의됨.
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
