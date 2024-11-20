@@ -1,4 +1,5 @@
 ## nextjs 프로젝트 구조
+
 ```bash
 .
 ├── README.md                # 프로젝트에 대한 설명과 사용법을 문서화한 파일.
@@ -16,7 +17,9 @@
 ```
 
 ## tsconfig.json
+
 아래 JSON은 TypeScript 프로젝트, 특히 Next.js 환경에서 사용하는 `tsconfig.json`의 설정 파일입니다. 각 옵션은 컴파일러의 동작 방식을 정의하며, Next.js의 권장 설정을 포함하고 있습니다.
+
 ```
 {
   "compilerOptions": {
@@ -75,7 +78,7 @@
   },
   "include": [
     // TypeScript 컴파일러가 포함할 파일들
-    "next-env.d.ts", 
+    "next-env.d.ts",
     // Next.js 환경 타입 정의 파일
     "**/*.ts",
     // 모든 TypeScript 파일
@@ -90,8 +93,10 @@
     // 외부 모듈 디렉토리 (보통 타입 체크하지 않음)
   ]
 }
-``` 
+```
+
 ## tailwind.config.ts
+
 아래 설정은 프로젝트에서 사용자 정의 스타일과 TailwindCSS 기본 기능을 유연하게 사용하도록 구성되었습니다.
 
 ```typescript
@@ -121,22 +126,25 @@ export default {
   },
   plugins: [],
   // 사용할 추가 TailwindCSS 플러그인을 지정합니다.
-
 } satisfies Config;
 // 설정 객체가 TailwindCSS의 `Config` 타입을 충족함을 명시합니다.
 // TypeScript를 사용할 때, 설정이 올바르게 작성되었는지 검증할 수 있도록 합니다.
 ```
 
 ### 주요 포인트:
+
 1. **`content`**:
+
    - TailwindCSS가 사용되지 않는 클래스들을 제거하는 **Purge** 기능을 위해 어디에서 TailwindCSS를 사용할지 정의.
    - 정의된 경로 내의 파일만 분석하여 클래스 이름을 포함합니다.
 
 2. **`theme.extend`**:
+
    - 기본 TailwindCSS 테마를 덮어쓰지 않고 확장.
    - 여기서는 사용자 정의 CSS 변수(`--background`, `--foreground`)를 Tailwind 색상 시스템에 추가.
 
 3. **`plugins`**:
+
    - TailwindCSS 플러그인을 사용해 확장 가능.
    - 플러그인을 추가하면 `plugins` 배열에 선언.
 
@@ -145,6 +153,7 @@ export default {
    - Tailwind 설정이 올바른 구조를 따르고 있는지 확인.
 
 ## postcss.config.ts
+
 PostCSS는 CSS를 전처리하거나 변환하기 위한 도구입니다. 이 설정에서는 TailwindCSS 플러그인을 추가하여 프로젝트에서 TailwindCSS를 사용하는 데 필요한 스타일 처리를 담당합니다.
 
 ```typescript
@@ -163,19 +172,24 @@ const config = {
 export default config;
 // PostCSS 설정 객체를 기본 내보내기(`export default`)로 내보냅니다.
 ```
+
 ---
+
 ### 주요 포인트:
 
 1. **`plugins`**:
+
    - PostCSS가 처리할 CSS에 적용할 플러그인 목록입니다.
    - 여기서는 **TailwindCSS**만 플러그인으로 추가되어 있습니다.
    - PostCSS를 통해 TailwindCSS가 CSS를 생성하거나 필요한 작업을 수행하도록 합니다.
 
 2. **`tailwindcss`**:
+
    - TailwindCSS 플러그인을 PostCSS에서 사용하도록 지정합니다.
    - TailwindCSS 설정 파일(`tailwind.config.ts`)을 기반으로 스타일을 처리합니다.
 
 3. **`@type` 주석**:
+
    - TypeScript로 작성된 PostCSS 설정 파일에서 **타입 힌트**를 제공합니다.
    - `postcss-load-config` 라이브러리의 `Config` 타입을 사용하여, PostCSS 설정 구조가 올바른지 확인할 수 있습니다.
 
@@ -184,7 +198,9 @@ export default config;
    - 이 파일은 PostCSS가 설정을 로드할 때 사용됩니다.
 
 ## package.json
+
 다음은 `package.json` 파일의 구성과 각 속성의 설명입니다.
+
 ```
 {
   "name": "nextjs15-crash-course",
@@ -260,21 +276,26 @@ export default config;
 ### 주요 포인트:
 
 1. **`name`**:
+
    - 프로젝트 이름을 지정. `npm`에서 프로젝트를 관리하기 위한 이름.
    - 기본적으로 다른 프로젝트와 이름이 겹치지 않도록 유의.
 
 2. **`version`**:
+
    - 프로젝트 버전을 명시.
    - `Semantic Versioning`(유의적 버전: major.minor.patch)을 따릅니다.
 
 3. **`private`**:
+
    - `true`로 설정하면 프로젝트가 `npm publish` 명령어로 게시되지 않도록 보호.
 
 4. **`scripts`**:
+
    - 자주 사용하는 명령어를 간단히 실행할 수 있도록 별칭 설정.
    - `dev`, `build`, `start`, `lint` 등의 명령어를 정의.
 
 5. **`dependencies`**:
+
    - 프로젝트 실행 시 필요한 라이브러리.
    - React, React DOM, Next.js 등 주요 프레임워크와 라이브러리가 포함.
 
@@ -285,6 +306,7 @@ export default config;
 ---
 
 ### 추가 설명:
+
 - **`--turbopack`**: `next dev` 명령어에서 사용된 TurboPack은 Next.js에서 제공하는 최신 빌드 도구로, 기존 Webpack보다 빠른 빌드 속도를 제공합니다.
 - **버전 관리**:
   - 버전 번호는 `^`가 붙어 있으면 동일한 major 버전 내에서 최신 버전으로 업데이트 가능.
@@ -294,6 +316,7 @@ export default config;
 다음은 주어진 코드에 대한 설명입니다.
 
 ## next-env.d.ts
+
 ```typescript
 /// <reference types="next" />
 // Next.js 타입 정의를 포함합니다.
@@ -316,15 +339,18 @@ export default config;
 ### 주요 포인트:
 
 1. **`/// <reference types="..." />`**:
+
    - TypeScript의 삼중 슬래시 지시자(triple-slash directive).
    - 다른 타입 정의 파일을 참조하거나 타입 정보를 추가로 가져오기 위해 사용.
    - 여기서는 `next`와 `next/image-types/global`에 정의된 타입들을 가져옵니다.
 
 2. **파일의 역할**:
+
    - 이 파일은 TypeScript 프로젝트에서 Next.js와 관련된 타입 정보를 포함하도록 설정.
    - Next.js에서 제공하는 타입 정의를 프로젝트 전역에서 사용 가능하게 합니다.
 
 3. **수정 금지**:
+
    - 이 파일은 Next.js가 자동으로 생성하거나 관리하는 파일입니다.
    - 수동으로 수정하면 업데이트 또는 빌드 과정에서 충돌이 발생할 수 있으므로 수정하지 않아야 합니다.
 
@@ -355,10 +381,12 @@ export default nextConfig;
 ### 주요 포인트:
 
 1. **`NextConfig` 타입**:
+
    - Next.js 설정 객체의 타입을 명시적으로 지정합니다.
    - 설정 옵션에 대한 자동 완성 및 타입 검사를 제공하므로 개발자가 설정 오류를 줄일 수 있습니다.
 
 2. **`nextConfig` 객체**:
+
    - Next.js 애플리케이션의 동작 방식을 커스터마이징하기 위한 설정 객체입니다.
    - 설정 가능한 주요 옵션은 다음과 같습니다:
      - `reactStrictMode`: React의 Strict Mode를 활성화.
@@ -368,10 +396,11 @@ export default nextConfig;
      - `env`: 환경 변수를 설정.
 
    예시:
+
    ```typescript
    const nextConfig: NextConfig = {
      reactStrictMode: true, // React의 Strict Mode 활성화
-     basePath: "/app",      // 기본 경로를 '/app'으로 설정
+     basePath: "/app", // 기본 경로를 '/app'으로 설정
      env: {
        API_URL: "https://example.com/api", // 환경 변수 설정
      },
@@ -384,7 +413,9 @@ export default nextConfig;
 ---
 
 ### 이 파일의 역할:
+
 - **Next.js 설정 관리**:
+
   - Next.js 애플리케이션의 전반적인 설정을 담당합니다.
   - 설정 파일을 수정하면 개발 서버를 다시 시작해야 변경 사항이 반영됩니다.
 
@@ -394,9 +425,11 @@ export default nextConfig;
 ---
 
 ### 결론:
+
 이 코드는 Next.js 설정을 정의하는 기본 구조이며, `NextConfig` 타입을 사용해 올바른 설정을 작성할 수 있도록 돕습니다. 필요한 설정 옵션을 `nextConfig` 객체에 추가하여 프로젝트에 맞게 커스터마이징하면 됩니다.
 
 ## .eslintrc.json
+
 다음은 `.eslintrc.json` 파일의 구성에 대한 설명입니다.
 
 ```
@@ -410,10 +443,12 @@ export default nextConfig;
 ### 주요 구성 요소 설명:
 
 1. **`extends`**:
+
    - ESLint 설정을 다른 기본 설정으로 확장합니다.
    - 지정된 설정들을 기반으로 ESLint가 동작하며, 프로젝트에 맞게 규칙을 추가하거나 덮어쓸 수 있습니다.
 
 2. **`next/core-web-vitals`**:
+
    - Next.js에서 성능과 접근성을 개선하기 위해 권장하는 ESLint 규칙 모음.
    - 주요 내용:
      - React의 Strict Mode와 관련된 규칙.
@@ -428,7 +463,9 @@ export default nextConfig;
 ---
 
 ### 이 설정의 역할:
+
 - **Next.js에 적합한 코드 품질 유지**:
+
   - Next.js 프로젝트에 특화된 권장 사항을 적용하여 성능과 코드 품질을 유지합니다.
   - TypeScript를 사용하는 경우 관련 규칙을 추가로 적용.
 
@@ -439,6 +476,7 @@ export default nextConfig;
 ---
 
 ### 확장 및 사용자 정의:
+
 - 기본 규칙에 만족하지 않거나 추가적인 규칙이 필요하면, 설정을 덮어쓸 수 있습니다.
   예를 들어:
   ```
@@ -456,9 +494,11 @@ export default nextConfig;
 ---
 
 ### 결론:
+
 이 설정은 Next.js와 TypeScript를 사용하는 프로젝트에서 최적의 코드 품질과 성능을 유지하기 위한 기본적인 ESLint 구성을 제공합니다. 필요한 경우 추가 규칙을 정의하여 프로젝트 요구사항에 맞게 확장할 수 있습니다.
 
 ## **HMR (Hot Module Replacement) 개념 요약**
+
 - **정의**: 코드 변경 시 애플리케이션 전체를 새로고침하지 않고, 변경된 **모듈만** 브라우저에 즉시 갱신하는 기술.
 - **장점**:
   - **빠른 피드백 루프**: 코드 수정 → 결과 확인 시간을 단축.
@@ -469,6 +509,7 @@ export default nextConfig;
 ---
 
 ### **Next.js와 TurboPack**
+
 - **TurboPack**:
   - Next.js의 새로운 번들러로, **HMR을 훨씬 더 빠르게 수행**하기 위해 Rust로 개발.
   - 기존 Webpack보다 속도가 빠르고 효율적인 빌드 및 변경 감지 제공.
@@ -482,15 +523,19 @@ export default nextConfig;
 ---
 
 ### **핵심 요약**
+
 - **HMR**: 변경된 코드만 빠르게 갱신해 개발 속도와 효율성을 향상.
 - **TurboPack**: Next.js에서 HMR을 더 빠르게 실행하도록 설계된 최신 번들러. Rust 기반으로 Webpack보다 훨씬 빠르고, Next.js에 최적화된 개발 경험 제공.
 
 ## 서버사이드 컴포넌트에서의 console.log
+
 1. **`console.log`가 브라우저 콘솔에 `[Server]`로 출력되는 이유**:
+
    - Next.js는 서버 컴포넌트에서 실행된 로그를 브라우저 콘솔로 전달하며, 로그 앞에 `[Server]`를 붙여 표시합니다.
    - 이는 **서버에서 실행된 코드**임을 나타냅니다.
 
 2. **`[Server]`의 의미**:
+
    - 로그가 **서버 환경**에서 실행된 것을 구분하기 위한 표시입니다.
 
 3. **정리**:
@@ -498,29 +543,35 @@ export default nextConfig;
    - 이는 서버와 클라이언트 로그를 명확히 구분하기 위한 Next.js의 개발 지원 기능입니다.
 
 ## 클라이언트사이드 컴포넌트에서의 console.log
+
 ### **1. 서버 터미널에서 로그가 찍히는 이유**
+
 - **Next.js는 클라이언트 컴포넌트를 서버에서 한 번 실행**하여 번들링과 의존성 분석을 수행하기 때문입니다.
 - `"use client"`가 선언된 컴포넌트도 분석 목적으로 서버에서 실행됩니다.
 
 ---
 
 ### **2. 브라우저에서 로그가 두 번 찍히는 이유**
+
 - **React Strict Mode**가 개발 환경에서 활성화되어 클라이언트 컴포넌트를 두 번 렌더링합니다.
 - 이는 컴포넌트의 부작용 검사를 위한 React의 의도적인 동작입니다.
 
 ---
 
 ### **정리**
+
 - **서버 터미널**: 클라이언트 컴포넌트의 분석/번들링 과정에서 로그가 출력.
 - **브라우저**: React Strict Mode로 인해 두 번 렌더링되어 두 번 로그 출력.
 
 ## **Next.js App Router 핵심 요약**
 
 1. **디렉토리 기반 경로 결정**:
+
    - 디렉토리 구조가 URL 경로로 매핑됩니다.
    - 예: `app/about/page.tsx` → `/about`
 
 2. **파일 역할**:
+
    - `page.tsx`: 페이지 정의.
    - `[parameter]`: 동적 라우트 (예: `/blog/:id`).
    - `layout.tsx`: 공유 레이아웃 정의.
@@ -528,9 +579,156 @@ export default nextConfig;
    - `error.tsx`: 에러 처리.
 
 3. **장점**:
+
    - **직관적**이고 **자동화된 라우팅**.
    - 레이아웃과 동적 경로 지원.
 
 4. **주의**:
    - 파일 이름(`page.tsx`)과 위치 중요.
    - 동적 라우트는 경로 충돌 방지 필요.
+
+## \*라우트 그룹(Route Groups)
+
+**라우트 그룹(Route Groups)**은 Next.js 13의 **App Router**에서 도입된 기능으로, 디렉토리 구조를 변경하지 않고도 라우팅 경로를 관리하거나 특정 경로를 그룹화하여 처리할 수 있는 강력한 도구입니다. 라우트 그룹은 디렉토리 이름 앞에 **`(`**와 **`)`**를 사용하여 정의합니다.
+
+---
+
+### **1. 라우트 그룹의 기본 개념**
+
+- 라우트 그룹은 특정 디렉토리를 URL 경로에 포함시키지 않고도 라우팅을 정의할 수 있는 기능입니다.
+- **디렉토리 구조**는 라우팅과 별도로 유지되므로, 파일 시스템 관리를 단순화하면서도 경로 구조를 유연하게 설계할 수 있습니다.
+
+#### 예제 디렉토리 구조:
+
+```plaintext
+app/
+├── (groupA)/
+│   ├── dashboard/
+│   │   └── page.tsx
+│   ├── settings/
+│   │   └── page.tsx
+```
+
+#### 결과 경로:
+
+- `/dashboard`: **(groupA)** 디렉토리는 URL에 포함되지 않음.
+- `/settings`
+
+---
+
+### **2. 사용 목적**
+
+1. **코드 분리 및 모듈화**:
+
+   - 대규모 프로젝트에서 특정 기능이나 경로를 그룹화하여 관리하기 쉽게 합니다.
+
+2. **레이아웃 공유**:
+
+   - 그룹 내 모든 라우트가 동일한 `layout.tsx` 파일을 공유하도록 설정할 수 있습니다.
+
+3. **URL 간소화**:
+   - 실제 디렉토리 구조는 복잡하더라도, 사용자에게 단순한 URL을 제공할 수 있습니다.
+
+---
+
+### **3. 라우트 그룹의 예제**
+
+#### 디렉토리 구조:
+
+```plaintext
+app/
+├── (marketing)/
+│   ├── about/
+│   │   └── page.tsx
+│   └── contact/
+│       └── page.tsx
+├── (admin)/
+│   ├── dashboard/
+│   │   └── page.tsx
+│   └── users/
+│       └── page.tsx
+```
+
+#### 동작:
+
+- `/about`: **(marketing)** 디렉토리는 URL에 노출되지 않음.
+- `/contact`
+- `/dashboard`
+- `/users`
+
+---
+
+### **4. 레이아웃과의 통합**
+
+라우트 그룹은 **레이아웃 파일(`layout.tsx`)**을 활용하여 그룹 내 경로에 공통 UI를 적용할 수 있습니다.
+
+#### 디렉토리 구조:
+
+```plaintext
+app/
+├── (groupA)/
+│   ├── layout.tsx
+│   ├── dashboard/
+│   │   └── page.tsx
+│   └── settings/
+│       └── page.tsx
+```
+
+#### `layout.tsx`:
+
+```tsx
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div>
+      <header>Group A Header</header>
+      <main>{children}</main>
+    </div>
+  );
+}
+```
+
+#### 결과:
+
+- `/dashboard`와 `/settings`는 `Group A Header`를 포함하는 공통 레이아웃을 사용.
+
+---
+
+### **5. 활용 예제**
+
+#### 다중 레이아웃 설정
+
+라우트 그룹을 사용해 서로 다른 레이아웃을 경로에 적용할 수 있습니다.
+
+```plaintext
+app/
+├── (public)/
+│   ├── home/
+│   │   └── page.tsx
+│   ├── about/
+│       └── page.tsx
+├── (private)/
+│   ├── dashboard/
+│   │   └── page.tsx
+│   ├── settings/
+│       └── page.tsx
+```
+
+- **`(public)` 그룹**: 공개 레이아웃.
+- **`(private)` 그룹**: 인증된 사용자 전용 레이아웃.
+
+---
+
+### **6. 장점**
+
+1. **유지보수성 증가**:
+   - 파일 시스템 관리와 URL 설계를 분리하여 코드베이스를 더 쉽게 관리.
+2. **중복 제거**:
+   - 공통 레이아웃과 스타일을 쉽게 적용.
+3. **URL 최적화**:
+   - 사용자가 깔끔한 URL을 사용할 수 있음.
+
+---
+
+### **결론**
+
+라우트 그룹은 **대규모 Next.js 프로젝트**에서 파일 구조와 URL 설계를 분리하고, 공통 레이아웃을 쉽게 공유할 수 있도록 도와줍니다. **복잡한 경로 구조를 단순화**하고, 프로젝트를 모듈화하는 데 매우 유용한 기능입니다. 😊
