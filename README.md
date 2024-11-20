@@ -182,3 +182,111 @@ export default config;
 4. **기본 내보내기**:
    - `export default config`로 PostCSS 설정을 외부에서 사용할 수 있게 만듭니다.
    - 이 파일은 PostCSS가 설정을 로드할 때 사용됩니다.
+
+## package.json
+다음은 `package.json` 파일의 구성과 각 속성의 설명입니다.
+```
+{
+  "name": "nextjs15-crash-course",
+  // 프로젝트 이름 (Next.js 15 강의용 프로젝트)
+
+  "version": "0.1.0",
+  // 현재 프로젝트 버전 (초기 버전 0.1.0)
+
+  "private": true,
+  // 이 설정이 true이면 프로젝트를 npm 레지스트리에 게시할 수 없습니다.
+
+  "scripts": {
+    // 프로젝트에서 실행할 수 있는 스크립트 정의
+
+    "dev": "next dev --turbopack",
+    // 개발 서버를 실행 (TurboPack을 활성화한 빠른 개발 빌드 사용)
+
+    "build": "next build",
+    // 프로젝트를 프로덕션 환경에 맞게 빌드
+
+    "start": "next start",
+    // 빌드된 프로덕션 서버를 시작
+
+    "lint": "next lint"
+    // ESLint를 사용해 프로젝트 코드의 문제를 검사
+  },
+
+  "dependencies": {
+    // 애플리케이션 실행에 필요한 의존성 목록
+
+    "react": "19.0.0-rc-66855b96-20241106",
+    // React 라이브러리의 최신 릴리즈 후보 (RC) 버전
+
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    // React DOM 렌더링 라이브러리의 최신 RC 버전
+
+    "next": "15.0.3"
+    // Next.js 프레임워크의 15.0.3 버전
+  },
+
+  "devDependencies": {
+    // 개발 환경에서만 필요한 의존성 목록
+
+    "typescript": "^5",
+    // TypeScript 최신 버전 (5 이상)
+
+    "@types/node": "^20",
+    // Node.js의 타입 정의 파일 (TypeScript 사용 시 필요)
+
+    "@types/react": "^18",
+    // React의 타입 정의 파일
+
+    "@types/react-dom": "^18",
+    // React DOM의 타입 정의 파일
+
+    "postcss": "^8",
+    // CSS를 변환하기 위한 도구
+
+    "tailwindcss": "^3.4.1",
+    // TailwindCSS 최신 버전 (유틸리티 기반 CSS 프레임워크)
+
+    "eslint": "^8",
+    // ESLint 최신 버전 (코드 품질과 스타일 검사 도구)
+
+    "eslint-config-next": "15.0.3"
+    // Next.js 프로젝트를 위한 ESLint 설정
+  }
+}
+```
+
+---
+
+### 주요 포인트:
+
+1. **`name`**:
+   - 프로젝트 이름을 지정. `npm`에서 프로젝트를 관리하기 위한 이름.
+   - 기본적으로 다른 프로젝트와 이름이 겹치지 않도록 유의.
+
+2. **`version`**:
+   - 프로젝트 버전을 명시.
+   - `Semantic Versioning`(유의적 버전: major.minor.patch)을 따릅니다.
+
+3. **`private`**:
+   - `true`로 설정하면 프로젝트가 `npm publish` 명령어로 게시되지 않도록 보호.
+
+4. **`scripts`**:
+   - 자주 사용하는 명령어를 간단히 실행할 수 있도록 별칭 설정.
+   - `dev`, `build`, `start`, `lint` 등의 명령어를 정의.
+
+5. **`dependencies`**:
+   - 프로젝트 실행 시 필요한 라이브러리.
+   - React, React DOM, Next.js 등 주요 프레임워크와 라이브러리가 포함.
+
+6. **`devDependencies`**:
+   - 개발 환경에서만 필요한 라이브러리.
+   - TypeScript, TailwindCSS, ESLint와 같은 도구들이 포함.
+
+---
+
+### 추가 설명:
+- **`--turbopack`**: `next dev` 명령어에서 사용된 TurboPack은 Next.js에서 제공하는 최신 빌드 도구로, 기존 Webpack보다 빠른 빌드 속도를 제공합니다.
+- **버전 관리**:
+  - 버전 번호는 `^`가 붙어 있으면 동일한 major 버전 내에서 최신 버전으로 업데이트 가능.
+  - React와 React DOM은 릴리즈 후보(RC) 버전을 사용 중.
+- 이 `package.json` 파일은 최신 Next.js 버전(15)을 활용한 개발 환경 설정을 보여줍니다.
