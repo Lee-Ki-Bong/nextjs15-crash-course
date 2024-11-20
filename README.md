@@ -332,3 +332,66 @@ export default config;
    - Next.js의 TypeScript 설정 문서를 참고하여 TypeScript와 관련된 추가 정보를 얻을 수 있습니다.
 
 이 파일은 TypeScript와 Next.js의 타입 통합을 지원하며, 개발자가 더욱 안정적으로 코드를 작성할 수 있도록 도와줍니다.
+
+## next.config.ts
+
+```typescript
+import type { NextConfig } from "next";
+// Next.js의 타입 정의에서 `NextConfig` 타입을 가져옵니다.
+// 이 타입은 Next.js의 설정 객체가 가져야 하는 구조를 정의합니다.
+
+const nextConfig: NextConfig = {
+  /* config options here */
+  // 이 부분에 Next.js 설정 옵션을 추가합니다.
+};
+
+export default nextConfig;
+// 설정 객체를 기본 내보내기(`export default`)로 내보냅니다.
+// Next.js는 이 파일에서 내보낸 설정을 기반으로 동작합니다.
+```
+
+---
+
+### 주요 포인트:
+
+1. **`NextConfig` 타입**:
+   - Next.js 설정 객체의 타입을 명시적으로 지정합니다.
+   - 설정 옵션에 대한 자동 완성 및 타입 검사를 제공하므로 개발자가 설정 오류를 줄일 수 있습니다.
+
+2. **`nextConfig` 객체**:
+   - Next.js 애플리케이션의 동작 방식을 커스터마이징하기 위한 설정 객체입니다.
+   - 설정 가능한 주요 옵션은 다음과 같습니다:
+     - `reactStrictMode`: React의 Strict Mode를 활성화.
+     - `basePath`: 애플리케이션이 서비스될 기본 경로 지정.
+     - `pageExtensions`: 페이지 파일의 확장자 설정.
+     - `webpack`: 웹팩 설정을 커스터마이징하는 함수.
+     - `env`: 환경 변수를 설정.
+
+   예시:
+   ```typescript
+   const nextConfig: NextConfig = {
+     reactStrictMode: true, // React의 Strict Mode 활성화
+     basePath: "/app",      // 기본 경로를 '/app'으로 설정
+     env: {
+       API_URL: "https://example.com/api", // 환경 변수 설정
+     },
+   };
+   ```
+
+3. **`export default`**:
+   - Next.js가 이 설정 객체를 읽어 프로젝트의 동작 방식을 정의합니다.
+
+---
+
+### 이 파일의 역할:
+- **Next.js 설정 관리**:
+  - Next.js 애플리케이션의 전반적인 설정을 담당합니다.
+  - 설정 파일을 수정하면 개발 서버를 다시 시작해야 변경 사항이 반영됩니다.
+
+- **타입 안전성 제공**:
+  - `NextConfig` 타입을 사용함으로써 설정 값이 올바른지 TypeScript로 확인할 수 있습니다.
+
+---
+
+### 결론:
+이 코드는 Next.js 설정을 정의하는 기본 구조이며, `NextConfig` 타입을 사용해 올바른 설정을 작성할 수 있도록 돕습니다. 필요한 설정 옵션을 `nextConfig` 객체에 추가하여 프로젝트에 맞게 커스터마이징하면 됩니다.
