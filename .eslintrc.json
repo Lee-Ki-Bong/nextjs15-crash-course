@@ -1,3 +1,14 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals", // Next.js Web Vitals 관련 규칙
+    "next/typescript", // Next.js TypeScript 관련 규칙
+    "eslint:recommended", // ESLint 기본 추천 규칙
+    "plugin:tailwindcss/recommended", // TailwindCSS 규칙
+    "standard", // JavaScript Standard 스타일 가이드
+    "prettier" // Prettier와 충돌하는 규칙 비활성화
+  ],
+  "plugins": ["tailwindcss"],
+  "rules": {
+    "tailwindcss/classnames-order": "warn"
+  }
 }
