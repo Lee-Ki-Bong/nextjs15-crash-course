@@ -395,3 +395,65 @@ export default nextConfig;
 
 ### 결론:
 이 코드는 Next.js 설정을 정의하는 기본 구조이며, `NextConfig` 타입을 사용해 올바른 설정을 작성할 수 있도록 돕습니다. 필요한 설정 옵션을 `nextConfig` 객체에 추가하여 프로젝트에 맞게 커스터마이징하면 됩니다.
+
+## .eslintrc.json
+다음은 `.eslintrc.json` 파일의 구성에 대한 설명입니다.
+
+```
+{
+  "extends": ["next/core-web-vitals", "next/typescript"]
+}
+```
+
+---
+
+### 주요 구성 요소 설명:
+
+1. **`extends`**:
+   - ESLint 설정을 다른 기본 설정으로 확장합니다.
+   - 지정된 설정들을 기반으로 ESLint가 동작하며, 프로젝트에 맞게 규칙을 추가하거나 덮어쓸 수 있습니다.
+
+2. **`next/core-web-vitals`**:
+   - Next.js에서 성능과 접근성을 개선하기 위해 권장하는 ESLint 규칙 모음.
+   - 주요 내용:
+     - React의 Strict Mode와 관련된 규칙.
+     - 성능 최적화(예: `Image`, `Link` 컴포넌트 사용 방법)와 Web Vitals 기준을 준수하도록 돕는 규칙.
+
+3. **`next/typescript`**:
+   - TypeScript와 Next.js 프로젝트에서 사용할 수 있도록 구성된 ESLint 규칙 모음.
+   - 주요 내용:
+     - TypeScript 관련 파일에서 발생할 수 있는 일반적인 오류 방지.
+     - TypeScript와 Next.js의 통합을 원활히 하기 위한 규칙 제공.
+
+---
+
+### 이 설정의 역할:
+- **Next.js에 적합한 코드 품질 유지**:
+  - Next.js 프로젝트에 특화된 권장 사항을 적용하여 성능과 코드 품질을 유지합니다.
+  - TypeScript를 사용하는 경우 관련 규칙을 추가로 적용.
+
+- **최적화된 개발 환경 제공**:
+  - Web Vitals를 준수하며 최적화된 애플리케이션 개발을 유도.
+  - TypeScript와 ESLint 간의 통합을 원활히 처리.
+
+---
+
+### 확장 및 사용자 정의:
+- 기본 규칙에 만족하지 않거나 추가적인 규칙이 필요하면, 설정을 덮어쓸 수 있습니다.
+  예를 들어:
+  ```
+  {
+    "extends": ["next/core-web-vitals", "next/typescript"],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      // React 17 이상에서 JSX 스코프 관련 경고 끄기
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+      // 사용되지 않는 변수 경고에서 특정 패턴 무시
+    }
+  }
+  ```
+
+---
+
+### 결론:
+이 설정은 Next.js와 TypeScript를 사용하는 프로젝트에서 최적의 코드 품질과 성능을 유지하기 위한 기본적인 ESLint 구성을 제공합니다. 필요한 경우 추가 규칙을 정의하여 프로젝트 요구사항에 맞게 확장할 수 있습니다.
