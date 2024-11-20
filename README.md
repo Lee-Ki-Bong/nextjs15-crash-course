@@ -290,3 +290,45 @@ export default config;
   - 버전 번호는 `^`가 붙어 있으면 동일한 major 버전 내에서 최신 버전으로 업데이트 가능.
   - React와 React DOM은 릴리즈 후보(RC) 버전을 사용 중.
 - 이 `package.json` 파일은 최신 Next.js 버전(15)을 활용한 개발 환경 설정을 보여줍니다.
+
+다음은 주어진 코드에 대한 설명입니다.
+
+## next-env.d.ts
+```typescript
+/// <reference types="next" />
+// Next.js 타입 정의를 포함합니다.
+// TypeScript에서 Next.js 관련 타입을 사용할 수 있도록 참조합니다.
+
+/// <reference types="next/image-types/global" />
+// Next.js의 이미지 관련 전역 타입 정의를 포함합니다.
+// TypeScript에서 Next.js 이미지 컴포넌트 및 기능과 관련된 타입을 참조합니다.
+
+// NOTE: This file should not be edited
+// 주의 사항: 이 파일은 수정하지 않아야 합니다.
+// Next.js가 자동 생성한 파일로, 직접 수정하면 예상치 못한 문제가 발생할 수 있습니다.
+
+// see https://nextjs.org/docs/app/building-your-application/configuring/typescript for more information.
+// 참고 링크: Next.js에서 TypeScript를 설정하고 사용하는 방법에 대한 공식 문서를 제공합니다.
+```
+
+---
+
+### 주요 포인트:
+
+1. **`/// <reference types="..." />`**:
+   - TypeScript의 삼중 슬래시 지시자(triple-slash directive).
+   - 다른 타입 정의 파일을 참조하거나 타입 정보를 추가로 가져오기 위해 사용.
+   - 여기서는 `next`와 `next/image-types/global`에 정의된 타입들을 가져옵니다.
+
+2. **파일의 역할**:
+   - 이 파일은 TypeScript 프로젝트에서 Next.js와 관련된 타입 정보를 포함하도록 설정.
+   - Next.js에서 제공하는 타입 정의를 프로젝트 전역에서 사용 가능하게 합니다.
+
+3. **수정 금지**:
+   - 이 파일은 Next.js가 자동으로 생성하거나 관리하는 파일입니다.
+   - 수동으로 수정하면 업데이트 또는 빌드 과정에서 충돌이 발생할 수 있으므로 수정하지 않아야 합니다.
+
+4. **참고 링크**:
+   - Next.js의 TypeScript 설정 문서를 참고하여 TypeScript와 관련된 추가 정보를 얻을 수 있습니다.
+
+이 파일은 TypeScript와 Next.js의 타입 통합을 지원하며, 개발자가 더욱 안정적으로 코드를 작성할 수 있도록 도와줍니다.
