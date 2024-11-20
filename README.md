@@ -143,3 +143,42 @@ export default {
 4. **`satisfies Config`**:
    - TypeScript에서 `Config` 타입을 통해 구조 검증.
    - Tailwind 설정이 올바른 구조를 따르고 있는지 확인.
+
+## postcss.config.ts
+PostCSS는 CSS를 전처리하거나 변환하기 위한 도구입니다. 이 설정에서는 TailwindCSS 플러그인을 추가하여 프로젝트에서 TailwindCSS를 사용하는 데 필요한 스타일 처리를 담당합니다.
+
+```typescript
+/** @type {import('postcss-load-config').Config} */
+// PostCSS 설정 파일의 타입을 지정합니다. `postcss-load-config` 라이브러리에서 제공하는 `Config` 타입을 사용합니다.
+
+const config = {
+  plugins: {
+    // PostCSS에서 사용할 플러그인들을 정의합니다.
+    tailwindcss: {},
+    // TailwindCSS 플러그인을 활성화합니다.
+    // `{}` 안에 TailwindCSS 플러그인의 추가 옵션을 정의할 수 있지만, 기본 설정으로 두고 있습니다.
+  },
+};
+
+export default config;
+// PostCSS 설정 객체를 기본 내보내기(`export default`)로 내보냅니다.
+```
+---
+### 주요 포인트:
+
+1. **`plugins`**:
+   - PostCSS가 처리할 CSS에 적용할 플러그인 목록입니다.
+   - 여기서는 **TailwindCSS**만 플러그인으로 추가되어 있습니다.
+   - PostCSS를 통해 TailwindCSS가 CSS를 생성하거나 필요한 작업을 수행하도록 합니다.
+
+2. **`tailwindcss`**:
+   - TailwindCSS 플러그인을 PostCSS에서 사용하도록 지정합니다.
+   - TailwindCSS 설정 파일(`tailwind.config.ts`)을 기반으로 스타일을 처리합니다.
+
+3. **`@type` 주석**:
+   - TypeScript로 작성된 PostCSS 설정 파일에서 **타입 힌트**를 제공합니다.
+   - `postcss-load-config` 라이브러리의 `Config` 타입을 사용하여, PostCSS 설정 구조가 올바른지 확인할 수 있습니다.
+
+4. **기본 내보내기**:
+   - `export default config`로 PostCSS 설정을 외부에서 사용할 수 있게 만듭니다.
+   - 이 파일은 PostCSS가 설정을 로드할 때 사용됩니다.
