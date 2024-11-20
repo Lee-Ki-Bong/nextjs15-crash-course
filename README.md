@@ -91,3 +91,55 @@
   ]
 }
 ``` 
+## tailwind.config.ts
+아래 설정은 프로젝트에서 사용자 정의 스타일과 TailwindCSS 기본 기능을 유연하게 사용하도록 구성되었습니다.
+
+```typescript
+import type { Config } from "tailwindcss";
+// TailwindCSS의 타입 정의를 가져와 이 파일이 TailwindCSS 설정임을 명시합니다.
+
+export default {
+  content: [
+    // TailwindCSS가 스타일을 적용할 파일 경로를 지정합니다.
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    // `pages` 디렉토리의 모든 JS, TS, JSX, TSX, MDX 파일
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    // `components` 디렉토리의 모든 JS, TS, JSX, TSX, MDX 파일
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    // `app` 디렉토리의 모든 JS, TS, JSX, TSX, MDX 파일
+  ],
+  theme: {
+    extend: {
+      // TailwindCSS의 기본 테마를 확장합니다.
+      colors: {
+        background: "var(--background)",
+        // CSS 변수 `--background`를 Tailwind에서 `background`로 참조 가능
+        foreground: "var(--foreground)",
+        // CSS 변수 `--foreground`를 Tailwind에서 `foreground`로 참조 가능
+      },
+    },
+  },
+  plugins: [],
+  // 사용할 추가 TailwindCSS 플러그인을 지정합니다.
+
+} satisfies Config;
+// 설정 객체가 TailwindCSS의 `Config` 타입을 충족함을 명시합니다.
+// TypeScript를 사용할 때, 설정이 올바르게 작성되었는지 검증할 수 있도록 합니다.
+```
+
+### 주요 포인트:
+1. **`content`**:
+   - TailwindCSS가 사용되지 않는 클래스들을 제거하는 **Purge** 기능을 위해 어디에서 TailwindCSS를 사용할지 정의.
+   - 정의된 경로 내의 파일만 분석하여 클래스 이름을 포함합니다.
+
+2. **`theme.extend`**:
+   - 기본 TailwindCSS 테마를 덮어쓰지 않고 확장.
+   - 여기서는 사용자 정의 CSS 변수(`--background`, `--foreground`)를 Tailwind 색상 시스템에 추가.
+
+3. **`plugins`**:
+   - TailwindCSS 플러그인을 사용해 확장 가능.
+   - 플러그인을 추가하면 `plugins` 배열에 선언.
+
+4. **`satisfies Config`**:
+   - TypeScript에서 `Config` 타입을 통해 구조 검증.
+   - Tailwind 설정이 올바른 구조를 따르고 있는지 확인.
